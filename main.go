@@ -3,13 +3,16 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	arithmetic "github.com/henrique/cobraStuff/arithmetic"
 )
 
 func main() {
-	http.HandleFunc("/", index)
-	http.HandleFunc("/about", about)
-	fmt.Println("server starting ...")
-	http.ListenAndServe(":3000", nil)
+	fmt.Println(arithmetic.Ints(1,2,3))
+	// http.HandleFunc("/", index)
+	// http.HandleFunc("/about", about)
+	// fmt.Println("server starting ...")
+	// http.ListenAndServe(":3000", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
