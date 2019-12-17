@@ -3,13 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-
-	// "\github.com\henrique\cobraStuff\cmd"
-	_ "github.com/spf13/cobra"
 )
-
-// https://github.com/spf13/cobra:
-// You will additionally define flags
 
 func main() {
 	http.HandleFunc("/", index)
