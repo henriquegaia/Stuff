@@ -5,18 +5,17 @@ import (
 	"fmt"
 	"net/http"
 
-	// "str/conv"
-	// "math/rand"
-	// "encoding/json"
-
 	"github.com/gorilla/mux"
 )
 
 func main() {
 	r := mux.NewRouter()
 
-	books = append(books, Book{ID: "2", ISBN: "45345", Title: "The 1 thing",
-		Author: &Author{FirstName: "Gary", LastName: "Keller"}})
+	keller := author{FirstName: "Gary", LastName: "Keller"}
+	// filima := author{FirstName: "John", LastName: "Kilima"}
+
+	books = append(books, book{ID: "1", ISBN: "0001", Title: "The 1 thing", Author: &keller})
+	// books = append(books, book{ID: "2", ISBN: "0002", Title: "Here and Go", Author: &filima})
 
 	r.HandleFunc("/api/books", getBooks).Methods("GET")
 	r.HandleFunc("/api/books/{id}", getBook).Methods("GET")
@@ -30,19 +29,19 @@ func main() {
 	// http.HandleFunc("/about", about)
 }
 
-type Book struct {
+type book struct {
 	ID     string  `json:"id"`
 	ISBN   string  `json:"isbn"`
 	Title  string  `json:"title"`
-	Author *Author `json:"author"`
+	Author *author `json:"author"`
 }
 
-type Author struct {
+type author struct {
 	FirstName string `json:"string"`
 	LastName  string `json:"string"`
 }
 
-var books []Book
+var books []book
 
 func getBooks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
